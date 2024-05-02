@@ -1,0 +1,7 @@
+{
+  "name": "echo-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Carlos Moreno <clmorenoh@gmail.com>",
+  "license": "MIT"
+}
