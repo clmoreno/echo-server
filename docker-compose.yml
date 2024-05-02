@@ -1,0 +1,6 @@
+name: http-testing
+services:
+  echo-server:
+    image: cm-echo-server:latest
+    ports:
+      - "8080:8080"
