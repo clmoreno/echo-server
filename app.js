@@ -6,6 +6,12 @@ const PORT = process.env.LISTEN_PORT ?? 8080;
 function requestListener(req, res) {
     res.setHeader('Content-Type', 'application/json')
     res.writeHead(200);
+
+    const network = Object.entries(os.networkInterfaces()).map(it => it[1]).flat()
+        .filter(i => i.family === 'IPv4')
+        .filter(i => i.internal === false)
+        .shift();
+
     const response = {
         headers: req.headers,
         method: req.method,
@@ -17,7 +23,8 @@ function requestListener(req, res) {
             release: os.release(),
             uptime: os.uptime(),
             memory: os.totalmem(),
-            machine: os.machine()
+            machine: os.machine(),
+            network: network
         }
     };
     res.end(JSON.stringify(response));
